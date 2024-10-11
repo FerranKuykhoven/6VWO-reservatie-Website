@@ -1,0 +1,20 @@
+header{
+    background-color: #954f59;
+    border: 2px solid #954f59;
+    border-radius: 12px;
+    padding: 5px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+
+nav {
+    background-color: #954f59;
+    border: 2px solid #954f59;
+    padding: 5px;
+}
+
+body{
+    background-color: #ffa322;
+}
