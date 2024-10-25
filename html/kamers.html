@@ -16,7 +16,71 @@
         <li><a href="/html/index.html">Over ons</a></li>
     </ul>
 
-    Aanbod van Kamers
+    <header>
+        Aanbod van Kamers
+    </header>
+
+    <p>kleine kamer
+        prijs = <span id = "prijsKleineKamer">prijsKleineKamer</span>
+        kamers Over = <span id = "kleineKamersOver"> hoeveelheid kamers over</span>
+    </p>
+
+   
+
+    <p>Grote kamer
+        prijs = <span id = "prijsGroteKamer">prijsGroteKamer</span>
+    </p>
+
+    <button id="verhoog-btn">Verhoog prijs</button>
+	<button id="verlaag-btn">Verlaag prijs</button>
+	<button id="boekKleineKamer-btn">Boek de kleine kamer</button> 
+
+
+        
+<script>
+
+    const prijsKleineKamerSpan = document.getElementById('prijsKleineKamer');
+    const prijsGroteKamerSpan = document.getElementById("prijsGroteKamer")
+    const kleineKamersOverSpan = document.getElementById("kleineKamersOver")
+    const verhoogButton = document.getElementById('verhoog-btn');
+    const verlaagButton = document.getElementById('verlaag-btn');
+    const boekKleinekamerButton = document.getElementById('boekKleineKamer-btn')
+
+    let prijsKleineKamer = 10;
+    let prijsGroteKamer = 20;
+    let getal = 4;
+    let kleineKamersOver = 13;
+    let varPrijsKleineKamers = 2;
+
+    verhoogButton.addEventListener('click', function() 
+    {
+	    getal++;
+	    prijsKleineKamerSpan.textContent = prijsKleineKamer * getal;
+        prijsGroteKamerSpan.textContent = prijsGroteKamer * getal;
+    });
+
+    verlaagButton.addEventListener('click', function() 
+    {
+	    getal--;
+	    prijsKleineKamerSpan.textContent = prijsKleineKamer * getal;
+        prijsGroteKamerSpan.textContent = prijsGroteKamer * getal;
+    });
+
+
+    boekKleinekamerButton.addEventListener('click', function()
+    {
+        kleineKamersOver--;
+        kleineKamersOverSpan.textContent = kleineKamersOver;
+        varPrijsKleineKamers++;
+        prijsKleineKamerSpan.textContent = prijsKleineKamer * getal * varPrijsKleineKamers;
+
+    });
+
+    
+
+	
+</script>
+
 
 
 </body>
