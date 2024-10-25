@@ -1,5 +1,11 @@
+:root{
+  --backgroundColor: #954f59;
+  
+}
+
+
 header{
-    background-color: #954f59;
+    background-color: var(--backgroundColor);
     border: 2px solid #954f59;
     border-radius: 12px;
     padding: 5px;
@@ -41,5 +47,9 @@ ul {
   
   /* Change the link color to #111 (black) on hover */
   li a:hover {
-    background-color: #111;
+    background-color: #ffa322;
+  }
+
+  li a:active{
+    background-color: aliceblue;
   }
