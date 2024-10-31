@@ -6,15 +6,19 @@
     <link rel="stylesheet" href="css\index.css">
     <title>6VWO Reservatie Website</title>
 </head>
-<body>
 
-    
-    <ul>
-        <li><a href="/html/index.html">Home</a></li>
-        <li><a class="active" href="/html/kamers.html">Kamers</a></li>
-        <li><a href="/html/restaurant.html">Restaurant</a></li>
-        <li><a href="/html/index.html">Over ons</a></li>
-    </ul>
+<body onload="updateprijs()">
+ 
+    <div class="navbar">
+        
+        <ul >
+            <li><a href="/html/index.html">Home</a></li>
+            <li><a class="active" href="/html/kamers.html">Kamers</a></li>
+            <li><a href="/html/restaurant.html">Restaurant</a></li>
+            <li><a href="/html/overOns.html">Over ons</a></li>
+        </ul>
+
+    </div>
 
     <header>
         Aanbod van Kamers
@@ -25,8 +29,6 @@
         kamers Over = <span id = "kleineKamersOver"> hoeveelheid kamers over</span>
     </p>
 
-   
-
     <p>Grote kamer
         prijs = <span id = "prijsGroteKamer">prijsGroteKamer</span>
     </p>
@@ -35,53 +37,144 @@
 	<button id="verlaag-btn">Verlaag prijs</button>
 	<button id="boekKleineKamer-btn">Boek de kleine kamer</button> 
 
-
+    <img  class="image" src="/images/placeHolder.png" alt="placeHolder">
+    <img  class="image" src="/images/placeHolder.png" alt="placeHolder">
         
-<script>
+    <script>
 
-    const prijsKleineKamerSpan = document.getElementById('prijsKleineKamer');
-    const prijsGroteKamerSpan = document.getElementById("prijsGroteKamer")
-    const kleineKamersOverSpan = document.getElementById("kleineKamersOver")
-    const verhoogButton = document.getElementById('verhoog-btn');
-    const verlaagButton = document.getElementById('verlaag-btn');
-    const boekKleinekamerButton = document.getElementById('boekKleineKamer-btn')
+        const prijsKleineKamerSpan = document.getElementById('prijsKleineKamer');
+        const prijsGroteKamerSpan = document.getElementById("prijsGroteKamer")
+        const kleineKamersOverSpan = document.getElementById("kleineKamersOver")
+        const verhoogButton = document.getElementById('verhoog-btn');
+        const verlaagButton = document.getElementById('verlaag-btn');
+        const boekKleinekamerButton = document.getElementById('boekKleineKamer-btn')
 
-    let prijsKleineKamer = 10;
-    let prijsGroteKamer = 20;
-    let getal = 4;
-    let kleineKamersOver = 13;
-    let varPrijsKleineKamers = 2;
+        let prijsKleineKamer = 10;
+        let prijsGroteKamer = 20;
+        let getal = 4;
+        let kleineKamersOver = 13;
+        let varPrijsKleineKamers = 2;
+     
+        function updateprijs() 
+        {
 
-    verhoogButton.addEventListener('click', function() 
-    {
-	    getal++;
-	    prijsKleineKamerSpan.textContent = prijsKleineKamer * getal;
-        prijsGroteKamerSpan.textContent = prijsGroteKamer * getal;
-    });
-
-    verlaagButton.addEventListener('click', function() 
-    {
-	    getal--;
-	    prijsKleineKamerSpan.textContent = prijsKleineKamer * getal;
-        prijsGroteKamerSpan.textContent = prijsGroteKamer * getal;
-    });
+            kleineKamersOverSpan.textContent = kleineKamersOver;
+            prijsKleineKamerSpan.textContent = prijsKleineKamer * getal * varPrijsKleineKamers;
+            prijsGroteKamerSpan.textContent = prijsGroteKamer * getal;
 
 
-    boekKleinekamerButton.addEventListener('click', function()
-    {
-        kleineKamersOver--;
-        kleineKamersOverSpan.textContent = kleineKamersOver;
-        varPrijsKleineKamers++;
-        prijsKleineKamerSpan.textContent = prijsKleineKamer * getal * varPrijsKleineKamers;
+        }
 
-    });
+        verhoogButton.addEventListener('click', function verhoogprijsfn() 
+        {
 
+            getal++;
+            prijsKleineKamerSpan.textContent = prijsKleineKamer * getal;
+            prijsGroteKamerSpan.textContent = prijsGroteKamer * getal;
+
+        });
+
+        verlaagButton.addEventListener('click', function verlaagprijsfn() 
+        {
+            
+            getal--;
+            prijsKleineKamerSpan.textContent = prijsKleineKamer * getal;
+            prijsGroteKamerSpan.textContent = prijsGroteKamer * getal;
+
+        });
+
+        boekKleinekamerButton.addEventListener('click', function boekkkleinekamerfn()
+        {
+            
+            kleineKamersOver--;
+            kleineKamersOverSpan.textContent = kleineKamersOver;
+            varPrijsKleineKamers++;
+            prijsKleineKamerSpan.textContent = prijsKleineKamer * getal * varPrijsKleineKamers;
+
+        });
+
+    </script>
+
+    <h1>Kamer aanbod</h1>
+
+    <div class="maincategory">
+
+        <h2>Grote kamers</h2>
+
+        <ul>
+            <li>
+                <a href="groteKamer1">
+
+                    <img  class="image" src="/images/placeHolder.png" alt="placeHolder">
+                    Grote kamer 1
+
+                </a>
+            </li>
+
+            <li>
+                <a href="groteKamer2">
+
+                    <img  class="image" src="/images/placeHolder.png" alt="placeHolder">
+                    Grote kamer 2
+                    
+                </a>
+            </li>
+
+            <li>
+                <a href="groteKamer3">
+
+                    <img  class="image" src="/images/placeHolder.png" alt="placeHolder">
+                    Grote kamer 3
+                    
+                </a>
+            </li>
+
+            <li>
+                <a href="groteKamer4">
+
+                    <img  class="image" src="/images/placeHolder.png" alt="placeHolder">
+                    Grote kamer 4
+                    
+                </a>
+            </li>
+
+            <li>
+                <a href="groteKamer5">
+
+                    <img  class="image" src="/images/placeHolder.png" alt="placeHolder">
+                    Grote kamer 5
+                    
+                </a>
+            </li>
+
+            <li>
+                <a href="groteKamer6">
+
+                    <img  class="image" src="/images/placeHolder.png" alt="placeHolder">
+                    Grote kamer 6
+                    
+                </a>
+
+            </li>
+
+        </ul>
+
+        <h2>Kleine kamers</h2>
+
+        <ul>
+            <li>
+                <a href="groteKamer6">
+
+                    <img  class="image" src="/images/placeHolder.png" alt="placeHolder">
+                    Grote kamer 6
+                    
+                </a>
+
+            </li>
+        </ul>
+
+    </div>
     
-
-	
-</script>
-
-
 
 </body>
 </html>

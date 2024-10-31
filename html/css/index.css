@@ -26,7 +26,7 @@ body{
     background-color: #ffa322;
 }
 
-ul {
+.navbar ul {
     list-style-type: none;
     margin: 0;
     border: 0;
@@ -47,11 +47,39 @@ ul {
     text-decoration: none;
   }
   
-  /* Change the link color to #111 (black) on hover */
-  li a:hover {
+  
+ .navbar li a:hover {
     background-color: #ffa322;
   }
 
-  li a:active{
+  .navbar li .active{
     background-color: aliceblue;
+  }
+
+ .image {
+    display: block;
+    position: relative;
+    width: 512px;
+    height: 288px;
+    margin-bottom: 5px;
+    border: 5px solid var(--backgroundColor);
+  }
+
+  .maincategory {
+    display: inline;
+    float: left;
+    padding-bottom: 20px;
+  }
+
+  .maincategory ul{
+    display: line;
+    float: left;
+  }
+
+  .maincategory li {
+    display: line;
+    float: left;
+    width: 600px;
+    height: 340px;
+    overflow: hidden;
   }
