@@ -83,3 +83,35 @@ body{
     height: 340px;
     overflow: hidden;
   }
+
+  .kamers{
+    display: inline;
+    float: left;
+    padding-bottom: 20px;
+  }
+
+  .kamers ul {
+    display: line;
+    float: left;
+  }
+  
+  .kamers li {
+    display: line;
+    float: left;
+    width: 600px;
+    height: 340px;
+    overflow: hidden;
+  }
+
+  .kamers h1 {
+    text-align: center;
+  }
+
+  .kamers h2 {
+    text-align: center;
+  }
+
+  .kamers h3 {
+    text-align: center;
+  }
+

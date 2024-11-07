@@ -12,10 +12,12 @@
     <div class="navbar">
         
         <ul >
-            <li><a href="/index.html">Home</a></li>
-            <li><a class="active" href="/html/kamers.html">Kamers</a></li>
+
+            <li><a href="/html/index.html">Home</a></li>
+            <li><a class="active" href="/html/kamers.html">Kamers</a></li> <!-- dropdown menu toevoegen -->
             <li><a href="/html/restaurant.html">Restaurant</a></li>
             <li><a href="/html/overOns.html">Over ons</a></li>
+
         </ul>
 
     </div>
@@ -36,6 +38,8 @@
     <button id="verhoog-btn">Verhoog prijs</button>
 	<button id="verlaag-btn">Verlaag prijs</button>
 	<button id="boekKleineKamer-btn">Boek de kleine kamer</button> 
+    <button id="saveData-btn"> saveDataaa</button>
+    <button id="saveData-btn2"> saveDataaa2</button>
 
         
     <script>
@@ -46,6 +50,8 @@
         const verhoogButton = document.getElementById('verhoog-btn');
         const verlaagButton = document.getElementById('verlaag-btn');
         const boekKleinekamerButton = document.getElementById('boekKleineKamer-btn')
+        const saveDataButton = document.getElementById('saveData-btn')
+        const saveDataButton2 = document.getElementById('saveData-btn2')
 
         let prijsKleineKamer = 10;
         let prijsGroteKamer = 20;
@@ -90,6 +96,28 @@
             prijsKleineKamerSpan.textContent = prijsKleineKamer * getal * varPrijsKleineKamers;
 
         });
+
+
+        var data = {
+            kleineKamersOver,
+            prijsGroteKamer
+        }
+
+        saveDataButton.addEventListener('click',function savedatafn(){
+            localStorage["data"] = JSON.stringify(data);
+        })
+
+        saveDataButton.addEventListener('click',function savedata2fn(){
+            var data2 = localStorage.YOUR_VALUE;
+            chrome.downloads.download({
+                url: "data:text/plain," + data2,
+                filename: "data.txt",
+                conflictAction: "uniquify", // or "overwrite" / "prompt"
+                saveAs: false, // true gives save-as dialogue
+            }, function(downloadId) {
+                console.log("Downloaded item with ID", downloadId);
+            });
+        })
 
     </script>
 
@@ -172,6 +200,8 @@
         </ul>
 
     </div>
+
+    
     
 
 </body>
