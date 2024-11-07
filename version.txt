@@ -6,4 +6,4 @@
 💄 werkende nav bar 37caad99fda2ac8c58746bb8232fbbf016e5cfb0
 ✨ basis van een variable prijs voor kamers 342b1013e40acca3d02e15db183490d962ebc481
 0.010 31-10-2024
-🚧 basis van indeling 
+🚧 basis van indeling 5424fd7b5d99fc68b776d03912c42e9b5b172547
