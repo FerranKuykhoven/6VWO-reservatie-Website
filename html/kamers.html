@@ -38,8 +38,9 @@
     <button id="verhoog-btn">Verhoog prijs</button>
 	<button id="verlaag-btn">Verlaag prijs</button>
 	<button id="boekKleineKamer-btn">Boek de kleine kamer</button> 
-    <button id="saveData-btn"> saveDataaa</button>
-    <button id="saveData-btn2"> saveDataaa2</button>
+    <button onclick="exportData()">Export data to local txt file</button>
+    <button onclick="importData()">import data</button>
+    <form action="fileupload.php" enctype="multipart/form-data" method="post"><label class="custom-uploader" for="file">Upload Your File</label> <input id="file" accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps" name="fileToUpload" type="file" /> <button class="btn btn-success" name="submit" type="submit"> Upload File </button></form>
 
         
     <script>
@@ -50,8 +51,6 @@
         const verhoogButton = document.getElementById('verhoog-btn');
         const verlaagButton = document.getElementById('verlaag-btn');
         const boekKleinekamerButton = document.getElementById('boekKleineKamer-btn')
-        const saveDataButton = document.getElementById('saveData-btn')
-        const saveDataButton2 = document.getElementById('saveData-btn2')
 
         let prijsKleineKamer = 10;
         let prijsGroteKamer = 20;
@@ -97,27 +96,41 @@
 
         });
 
+        function exportData() 
+        {
 
-        var data = {
-            kleineKamersOver,
-            prijsGroteKamer
+            var data = 
+            {
+                    kleineKamersOver,
+                    prijsGroteKamer
+            }
+
+            localStorage["data"] = JSON.stringify(data);
+
+            const a = document.createElement("a");
+
+            a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], 
+            {
+
+                type: "text/plain",
+                saveAs: false 
+
+            }));
+
+            a.setAttribute("download", "data.txt");
+
+            document.body.appendChild(a);
+
+            a.click();
+
+            document.body.removeChild(a);
+
         }
 
-        saveDataButton.addEventListener('click',function savedatafn(){
-            localStorage["data"] = JSON.stringify(data);
-        })
-
-        saveDataButton.addEventListener('click',function savedata2fn(){
-            var data2 = localStorage.YOUR_VALUE;
-            chrome.downloads.download({
-                url: "data:text/plain," + data2,
-                filename: "data.txt",
-                conflictAction: "uniquify", // or "overwrite" / "prompt"
-                saveAs: false, // true gives save-as dialogue
-            }, function(downloadId) {
-                console.log("Downloaded item with ID", downloadId);
-            });
-        })
+        function importData()
+        {
+            kleineKamersOver = read('data.txt')
+        }
 
     </script>
 
@@ -200,9 +213,6 @@
         </ul>
 
     </div>
-
-    
-    
 
 </body>
 </html>
