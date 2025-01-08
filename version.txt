@@ -1,9 +1,12 @@
 0.001 11-10-2024
-🎉 eerste commit 8954f142bd876bcc5a867eae49b8d3a169b23940
-🚧 eerste deel nav bar 0195a9f6294c04f74c3d3485c2860479d81b5e72
-📝 version tracker 8d3e0d818370dcc8f6cb1b42d1fa7d12563c6785
+
 0.002 25-10-2024
-💄 werkende nav bar 37caad99fda2ac8c58746bb8232fbbf016e5cfb0
-✨ basis van een variable prijs voor kamers 342b1013e40acca3d02e15db183490d962ebc481
+
 0.010 31-10-2024
-🚧 basis van indeling 5424fd7b5d99fc68b776d03912c42e9b5b172547
+
+0.011 06-11-2024
+fixed href links die niet werkde 
+eerste versie van individuele kamers 
+begin van localstorage/data opslaan
+
+0.012 07-01-2025

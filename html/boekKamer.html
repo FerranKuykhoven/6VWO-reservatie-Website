@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Hotel Alpina Vista</title>
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a class="active" href="kamers.html">Kamers</a></li>
+            <li><a href="overOns.html">Over ons</a></li>
+
+        </ul>
+
+    </div>
+
+    <p>
+        Nog maar een paar stappen en u heeft uw kamer geboekt!
+    </p>
+    
+
+    <section class="room-details">
+        <h2>Room Details</h2>
+        <form id="roomDetailsForm" action="/submit-room-details" method="post">
+            <label for="roomType">Kamer Type</label>
+            <select id="roomType" name="roomType" required>
+                <option value="single">Groote Kamer</option>
+                <option value="double">Kleine Kamer</option>
+                
+            </select>
+            
+            <label for="check-in">Check-in Datum</label>
+            <input type="date" id="check-in" name="check-in" required>
+            
+            <label for="check-out">Check-out Datum</label>
+            <input type="date" id="check-out" name="check-out" required>
+            
+            <label for="guests">Aantal gasten</label>
+            <input type="number" id="guests" name="guests" required>
+            
+            <label for="importData">Import Occupied Dates</label>
+            <input type="file" id="importData" accept=".json" disabled>
+            
+            <button type="submit">Submit Room Details</button>
+        </form>
+        <button id="toggleAdminModus">Admin</button>
+        <button id="exportButton" disabled>Export Data</button>
+    </section>
+
+
+    <div class = "footer">
+        <div class="square">
+        <p>Hotel Alpina Vista - 2024</p>
+        <p>Contact: ferran.kuykhoven@hvc.nl</p>
+    </div>
+    </div>
+
+    <script>
+        let adminModus = false;
+        
+        let occupiedDates = {};
+
+        
+        function updateAdminUI() {
+            document.getElementById('importData').disabled = !adminModus;
+            document.getElementById('exportButton').disabled = !adminModus; 
+            console.log(`adminModus is nu ${adminModus ? 'enabled' : 'disabled'}`);
+        }
+
+        
+        document.getElementById('toggleAdminModus').addEventListener('click', function() {
+            adminModus = !adminModus;
+            updateAdminUI();
+        });
+
+       
+        window.addEventListener('load', function() {
+            updateAdminUI();
+        });
+
+        document.getElementById('importData').addEventListener('change', function(event) {
+            if (!adminModus) return;
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const data = JSON.parse(e.target.result);
+                        occupiedDates = data.occupiedDates || {};
+                        alert('Occupied dates imported successfully.');
+                    } catch (error) {
+                        alert('Failed to parse the file. Please ensure it is a valid JSON file.');
+                    }
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        document.getElementById('roomDetailsForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+           
+            const roomType = document.getElementById('roomType').value;
+            const checkIn = document.getElementById('check-in').value;
+            const checkOut = document.getElementById('check-out').value;
+            const guests = document.getElementById('guests').value;
+
+            if (!occupiedDates[roomType]) {
+                occupiedDates[roomType] = [];
+            }
+
+            const isDateOccupied = occupiedDates[roomType].some(date => {
+                const occupiedDate = new Date(date);
+                const checkInDate = new Date(checkIn);
+                const checkOutDate = new Date(checkOut);
+                return (checkInDate <= occupiedDate && occupiedDate <= checkOutDate);
+            });
+
+            if (isDateOccupied) {
+                alert('Geselecteerde data is al bezet. Kies een andere datum.');
+                return;
+            }
+
+            
+            if (new Date(checkIn) >= new Date(checkOut)) {
+                alert('Check-out datum moet na check-in datum zijn.');
+                return;
+            }
+
+            const roomDetails = {
+                roomType: roomType,
+                checkIn: checkIn,
+                checkOut: checkOut,
+                guests: guests
+            };
+            localStorage.setItem('roomDetails', JSON.stringify(roomDetails));
+
+            let currentDate = new Date(checkIn);
+            const endDate = new Date(checkOut);
+            while (currentDate <= endDate) {
+                occupiedDates[roomType].push(currentDate.toISOString().split('T')[0]);
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+        });
+
+        document.getElementById('exportButton').addEventListener('click', function() {
+            if (!adminModus) return;
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify({ occupiedDates }));
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", "occupiedDates.json");
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+        });
+    </script>
+</body>
+</html>

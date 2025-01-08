@@ -1,38 +1,52 @@
 :root{
-  --backgroundColor: #954f59;
-  --primeryColor : #ffa322;
+  --backgroundColor: #5d4232;
+  --primeryColor : #dfbf97;
+  --secondaryColor : aliceblue;
   
 }
 
 
 header{
     background-color: var(--backgroundColor);
-    border: 2px solid #954f59;
+    border: 2px solid var(--backgroundColor);
     border-radius: 12px;
     padding: 5px;
-    margin-top: 0px;
+    margin-top: 5px;
     margin-right: 0px;
     margin-bottom: 0px;
     margin-left: 0px;
 }
 
 nav {
-    background-color: #954f59;
-    border: 2px solid #954f59;
+    background-color: var(--backgroundColor);
+    border: 2px solid var(--backgroundColor);
     padding: 5px;
 }
 
 body{
-    background-color: #ffa322;
+    background-color: var(--primeryColor);
+}
+
+.navbar {
+  position: sticky;
+  top: 0px;
 }
 
 .navbar ul {
     list-style-type: none;
-    margin: 0;
+    margin: -8px;
     border: 0;
     padding: 0;
     overflow: hidden;
     background-color: var(--backgroundColor);
+  }
+
+  .navbar li a:hover {
+    background-color: var(--primeryColor);
+  }
+
+  .navbar li .active{
+    background-color: var(--secondaryColor);
   }
   
   li {
@@ -46,61 +60,57 @@ body{
     padding: 14px 16px;
     text-decoration: none;
   }
-  
-  
- .navbar li a:hover {
-    background-color: #ffa322;
-  }
-
-  .navbar li .active{
-    background-color: aliceblue;
-  }
 
  .image {
     display: block;
     position: relative;
+    float: center;
     width: 512px;
     height: 288px;
     margin-bottom: 5px;
     border: 5px solid var(--backgroundColor);
+    z-index: -1
+    ;
   }
 
   .maincategory {
-    display: inline;
-    float: left;
+    display: line;
+    float: center;
     padding-bottom: 20px;
   }
 
   .maincategory ul{
     display: line;
-    float: left;
+    float: center;
   }
 
   .maincategory li {
     display: line;
-    float: left;
+    float: center;
     width: 600px;
     height: 340px;
     overflow: hidden;
   }
 
   .kamers{
-    display: inline;
-    float: left;
+    display: line;
+    float: center;
     padding-bottom: 20px;
   }
 
   .kamers ul {
     display: line;
-    float: left;
+    float: center;
   }
   
   .kamers li {
     display: line;
-    float: left;
     width: 600px;
     height: 340px;
     overflow: hidden;
+    margin-bottom: 20px;
+    margin-right: 15px;
+    
   }
 
   .kamers h1 {
@@ -113,5 +123,84 @@ body{
 
   .kamers h3 {
     text-align: center;
+    position: relative;
+    font-size: 20px;
+    
   }
 
+p {
+  font-size: 40px;
+}
+
+.sliders {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+  overflow: visible;
+}
+
+.slides {
+  display : flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  height: 100%;
+}
+
+.slides img {
+  display: block;
+  width: 750px;
+  height: 500px;
+  margin-left: -70px;
+  margin-top: -8px;
+  
+}
+
+.sliderNav {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  margin: -8px;
+  margin-top: -140px;
+}
+
+.sliderNav button {
+  background-color: var(--backgroundColor);
+  border: 20px;
+  color: var(--primeryColor);
+  padding: 20px;
+  cursor: pointer;
+}
+
+.sliderNav button:hover {
+  background-color: var(--secondaryColor);
+} 
+
+h1 {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+h2 {
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 25px;
+}
+
+.footer {
+  height: 100%;
+  width: 105%;
+  background-color: var(--backgroundColor);
+  margin-left: -8px;
+  margin-bottom: -20px;
+  margin-right: -70px;
+  padding-bottom: 500px;
+}
+
+.footer p {
+  text-align: center;
+  font-size: 15px;
+}

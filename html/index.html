@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
-    <title>6VWO Reservatie Website</title>
+    <title>Hotel Alpina Vista</title>
 </head>
 
 <body>
@@ -14,20 +14,87 @@
         <ul>
             <li><a class="active" href="index.html">Home</a></li>
             <li><a href="kamers.html">Kamers</a></li>
-            <li><a href="restaurant.html">Restaurant</a></li>
             <li><a href="overOns.html">Over ons</a></li>
 
         </ul>
 
     </div>
 
-    <header>
-        Welcome op de website 
-    </header>
+    <div class="slider">
 
-    <p>
-        op deze website kunt u een kamer en of Restaurant boeken
-    </p>
+        <ul class="slides">
+
+            <img  src="../images/Screenshot 2025-01-08 233513.png" alt="fotoHotel">
+            <img  src="../images/pretty_scenery_of_a_mountain_a.jpeg" alt="fotoOmgeving">
+            <img  src="../images/pretty_scenery_of_a_mountain_a (1).jpeg" alt="fotoOmgeving1">
+            <img  src="../images/pretty_scenery_of_a_mountain_a (2).jpeg" alt="fotoOmgeving2">
+            <img  src="../images/pretty_scenery_of_a_mountain_a (3).jpeg" alt="fotoOmgeving3">
+            <img  src="../images/pretty_scenery_of_a_mountain_a (4).jpeg" alt="fotoOmgeving4">
+            <img  src="../images/pretty_scenery_of_a_mountain_a (5).jpeg" alt="fotoOmgeving5">
+            <img  src="../images/placeHolder.png" alt="placeHolder">
+
+        </ul>
+
+       
+    
+    </div>
+
+    <div class="sliderNav"> 
+        <button id="prev">❮</button>
+        <button id="next">❯</button>
+    </div>
+
+   
+
+    <h1>
+        Welkom op de website van hotel Alpina Vista.
+        <br>
+        <br>
+    Een plek waar luxe en comfort samenkomen voor een onvergetelijk verblijf!
+    </h1>
+
+    <br>
+    
+
+    <h2>
+    - Prachtige berguitzichten
+    <br>
+    - Luxe kamers en suites
+    <br>
+    - Bekroond restaurant
+    <br>
+    - Wellness en spa faciliteiten
+    <br>
+    - Activiteiten voor alle leeftijden
+    </h2>
+
+    <div class = "footer">
+        <div class="square">
+        <p>Hotel Alpina Vista - 2024</p>
+        <p>Contact: ferran.kuykhoven@hvc.nl</p>
+    </div>
+    </div>
+
+    <script>
+   let currentIndex = 0;
+        const slides = document.querySelector('.slides');
+        const totalSlides = document.querySelectorAll('.slides img').length;
+
+        document.getElementById('next').addEventListener('click', function() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlider();
+        });
+
+        document.getElementById('prev').addEventListener('click', function() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        });
+
+        function updateSlider() {
+            const offset = -currentIndex * 50;
+            slides.style.transform = `translateX(${offset}%)`;
+        }
+    </script>
     
 </body>
 </html>
