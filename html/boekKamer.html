@@ -93,9 +93,9 @@
                     try {
                         const data = JSON.parse(e.target.result);
                         occupiedDates = data.occupiedDates || {};
-                        alert('Occupied dates imported successfully.');
+                        alert('Data importeren geslaagd.');
                     } catch (error) {
-                        alert('Failed to parse the file. Please ensure it is a valid JSON file.');
+                        alert('Date importeren niet succesvol, zorg dat het json bestand klopt');
                     }
                 };
                 reader.readAsText(file);
